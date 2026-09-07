@@ -76,7 +76,7 @@ const WatchDetails = () => {
           </div>
 
           <div className="mt-7 flex flex-wrap items-end gap-3">
-            <p className="font-display text-3xl text-white sm:text-4xl">${watch.price.toLocaleString()}</p>
+            <p className="font-display text-3xl text-white sm:text-4xl">₹{watch.price.toLocaleString("en-IN")}</p>
             <span className="mb-1 text-[10px] uppercase tracking-widest text-amber-400/80">Complimentary insured delivery</span>
           </div>
 
@@ -110,7 +110,7 @@ const WatchDetails = () => {
                 <Plus size={15} />
               </button>
             </div>
-            <span className="text-xs text-stone-600">${(watch.price * quantity).toLocaleString()} total</span>
+            <span className="text-xs text-stone-600">₹{(watch.price * quantity).toLocaleString("en-IN")} total</span>
           </div>
 
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -122,7 +122,8 @@ const WatchDetails = () => {
             <button 
               type="button" 
               onClick={() => { addQuantity(); navigate("/checkout"); }} 
-className="btn-outline w-full flex items-center justify-center ![border-color:rgba(255,255,255,0.2)] !text-white hover:![border-color:#fbbf24] hover:!bg-amber-400 hover:!text-black"            >
+              className="btn-outline w-full flex items-center justify-center ![border-color:rgba(255,255,255,0.2)] !text-white hover:![border-color:#fbbf24] hover:!bg-amber-400 hover:!text-black"           
+            >
               <Zap size={16} className="mr-3" /> Buy Now
             </button>
           </div>
@@ -142,24 +143,37 @@ className="btn-outline w-full flex items-center justify-center ![border-color:rg
         </motion.div>
       </div>
 
+     
       <section className="mt-20 border-t border-white/10 pt-16 sm:mt-28 sm:pt-20">
         <div className="text-center">
           <p className="section-label">Collector Reviews</p>
           <h2 className="heading-md mt-5 text-white">A timepiece worth talking about.</h2>
         </div>
-        <div className="mx-auto mt-9 max-w-3xl border border-white/10 bg-stone-900 p-7 text-center sm:p-12">
-          <div className="flex justify-center gap-1">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} size={15} fill="currentColor" className="text-amber-400" />
-            ))}
-          </div>
-          <p className="mt-6 font-display text-xl leading-relaxed text-white sm:text-2xl">
-            “A beautifully considered piece with the presence and precision you expect from a serious luxury watch.”
-          </p>
-          <p className="mt-6 text-[9px] uppercase tracking-[0.2em] text-stone-500">Verified Collector · Private Client</p>
+        
+        <div className="mx-auto mt-9 max-w-3xl space-y-6">
+          {watch.reviews && watch.reviews.length > 0 ? (
+            watch.reviews.map((rev) => (
+              <div key={rev.id} className="border border-white/10 bg-stone-900 p-7 text-center sm:p-10">
+                <div className="flex justify-center gap-1">
+                  {[...Array(rev.rating)].map((_, i) => (
+                    <Star key={i} size={15} fill="currentColor" className="text-amber-400" />
+                  ))}
+                </div>
+                <p className="mt-6 font-display text-xl leading-relaxed text-white sm:text-2xl">
+                  “{rev.comment}”
+                </p>
+                <p className="mt-6 text-[9px] uppercase tracking-[0.2em] text-stone-500">{rev.author}</p>
+              </div>
+            ))
+          ) : (
+            <div className="border border-white/10 bg-stone-900 p-7 text-center">
+              <p className="text-sm text-stone-400">No reviews for this timepiece yet.</p>
+            </div>
+          )}
         </div>
       </section>
 
+   
       {related.length > 0 && (
         <section className="mt-20 sm:mt-28">
           <div className="mb-8 sm:mb-10">
@@ -174,7 +188,7 @@ className="btn-outline w-full flex items-center justify-center ![border-color:rg
                 </div>
                 <p className="mt-4 text-[9px] uppercase tracking-widest text-amber-400">{item.brand}</p>
                 <h3 className="mt-2 font-display text-xl text-white group-hover:text-amber-400 sm:text-2xl">{item.name}</h3>
-                <p className="mt-2 text-sm text-stone-400">${item.price.toLocaleString()}</p>
+                <p className="mt-2 text-sm text-stone-400">₹{item.price.toLocaleString("en-IN")}</p>
               </Link>
             ))}
           </div>

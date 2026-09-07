@@ -64,9 +64,9 @@ const Footer = () => {
           <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.16 }} className="min-w-0">
             <h3 className="text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-400">Concierge</h3>
             <div className="mt-5 space-y-4 text-sm text-stone-500">
-              <div className="flex items-start gap-3"><MapPin size={17} className="mt-0.5 shrink-0 text-amber-400" /><span>New York, NY</span></div>
+              <div className="flex items-start gap-3"><MapPin size={17} className="mt-0.5 shrink-0 text-amber-400" /><span>Salem, Tamil Nadu</span></div>
               <a href="mailto:hello@luxewatches.com" className="flex min-w-0 items-center gap-3 transition hover:text-white"><Mail size={17} className="shrink-0 text-amber-400" /><span className="break-all">hello@luxewatches.com</span></a>
-              <a href="tel:+18005550199" className="flex items-center gap-3 transition hover:text-white"><Phone size={17} className="shrink-0 text-amber-400" /><span className="whitespace-nowrap">+1 800 555 0199</span></a>
+              <a href="tel:+91 63678 90456" className="flex items-center gap-3 transition hover:text-white"><Phone size={17} className="shrink-0 text-amber-400" /><span className="whitespace-nowrap">91 63678 90456</span></a>
             </div>
           </motion.div>
         </div>

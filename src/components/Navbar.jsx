@@ -16,19 +16,19 @@ const Navbar = () => {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full px-0 pt-0 sm:px-3 sm:pt-3 lg:px-6">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full px-0 pt-0 sm:px-3 sm:pt-3 lg:px-6">
       <motion.nav
         initial={{ opacity: 0, y: -25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="navbar-3d navbar-floating relative mx-auto w-full max-w-full overflow-visible rounded-none border-x-0 border-y border-white/10 bg-[#111111]/95 backdrop-blur-xl sm:rounded-2xl sm:border"
+        className="navbar-3d navbar-floating relative mx-auto w-full max-w-full overflow-hidden rounded-none border-x-0 border-y border-white/10 bg-[#111111]/95 backdrop-blur-xl sm:rounded-2xl sm:border shadow-2xl"
         style={{ transformStyle: "preserve-3d" }}
       >
         <div className="pointer-events-none absolute -inset-1 -z-10 rounded-2xl bg-[rgba(201,162,39,0.10)] blur-2xl" />
         <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(201,162,39,0.40)] to-transparent sm:inset-x-8" />
 
         <div className="relative flex min-h-[64px] w-full items-center justify-between px-3 sm:min-h-[76px] sm:px-7 lg:px-9">
-       
+          
           <Link
             to="/"
             onClick={closeMenu}
@@ -87,11 +87,11 @@ const Navbar = () => {
             ))}
           </div>
 
-       
+          
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <Link
               to="/login"
-              className="nav-icon-3d hidden h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:flex"
+              className="nav-icon-3d hidden h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:flex hover:border-[rgba(201,162,39,0.4)] hover:text-white transition-colors"
               aria-label="Account"
             >
               <User size={18} strokeWidth={1.5} />
@@ -99,7 +99,7 @@ const Navbar = () => {
 
             <Link
               to="/cart"
-              className="nav-icon-3d relative flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:h-10 sm:w-10"
+              className="nav-icon-3d relative flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:h-10 sm:w-10 hover:border-[rgba(201,162,39,0.4)] hover:text-white transition-colors"
               aria-label={`Shopping Cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
             >
               <ShoppingBag size={18} strokeWidth={1.5} />
@@ -118,7 +118,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="nav-icon-3d flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/80 sm:h-10 sm:w-10 md:hidden"
+              className="nav-icon-3d flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/80 sm:h-10 sm:w-10 md:hidden hover:border-[rgba(201,162,39,0.4)] transition-colors"
               aria-label={menuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
               aria-expanded={menuOpen}
             >
@@ -137,7 +137,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -145,7 +144,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="overflow-hidden border-t border-white/10 md:hidden"
+              className="overflow-hidden border-t border-white/10 md:hidden bg-[#111111]"
             >
               <div className="space-y-2 px-3 py-4 sm:px-5 sm:py-5">
                 {navLinks.map((link) => (

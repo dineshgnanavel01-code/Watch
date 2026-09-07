@@ -1,33 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
 
 @theme {
-  --color-luxury-black: #090909;
-  --color-luxury-dark: #111111;
-  --color-luxury-dark-soft: #181818;
+  --color-luxury-black: #080C14;
+  --color-luxury-dark: #0D1322;
+  --color-luxury-dark-soft: #161F35;
 
-  --color-luxury-gold: #c9a227;
-  --color-luxury-gold-light: #e0c35a;
-  --color-luxury-gold-soft: #f0df9b;
+  --color-luxury-gold: #b78663;
+  --color-luxury-gold-light: #d4a37f;
+  --color-luxury-gold-soft: #e8c5ab;
 
-  --color-luxury-cream: #f7f4ed;
+  --color-luxury-cream: #f4f6f9;
   --color-luxury-white: #ffffff;
 
-  --color-luxury-muted: #77736b;
-  --color-luxury-border: #dedbd2;
+  --color-luxury-muted: #7A8499;
+  --color-luxury-border: #D1D8E6;
 
-  --font-display: "Playfair Display", serif;
-  --font-body: "Inter", sans-serif;
+  --font-display: "Cinzel", serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
 }
 
 
 
 :root {
-  font-family: "Inter", sans-serif;
-  color: #111111;
-  background: #f7f4ed;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #0D1322;
+  background: #f4f6f9;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,10 +35,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-
   scrollbar-width: none;
-
-  
   -ms-overflow-style: none;
 }
 
@@ -54,10 +51,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
 
- 
   scrollbar-width: none;
-
-  
   -ms-overflow-style: none;
 }
 
@@ -72,23 +66,18 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  background: #f7f4ed;
-  color: #111111;
+  background: #f4f6f9;
+  color: #0D1322;
 
-  font-family: "Inter", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   overflow-x: hidden;
   overflow-y: auto;
 
   -webkit-overflow-scrolling: touch;
-
- 
   overscroll-behavior-y: smooth;
 
-
   scrollbar-width: none;
-
-  
   -ms-overflow-style: none;
 
   -webkit-font-smoothing: antialiased;
@@ -124,45 +113,45 @@ a {
 
 
 .font-display {
-  font-family: "Playfair Display", serif;
+  font-family: "Cinzel", serif;
 }
 
 .font-body {
-  font-family: "Inter", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .heading-xl {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3rem, 7vw, 7rem);
-  line-height: 0.95;
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.8rem, 6.5vw, 6.5rem);
+  line-height: 1.05;
   font-weight: 600;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.02em;
 }
 
 .heading-lg {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.4rem, 5vw, 4.8rem);
-  line-height: 1;
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+  line-height: 1.1;
   font-weight: 600;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 
 .heading-md {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  line-height: 1.1;
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  line-height: 1.2;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
 }
 
 .luxury-title {
-  font-family: "Playfair Display", serif;
+  font-family: "Cinzel", serif;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
 }
 
 .luxury-text {
-  font-family: "Inter", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--color-luxury-muted);
@@ -171,8 +160,8 @@ a {
 
 
 ::selection {
-  background: rgba(201, 162, 39, 0.25);
-  color: #111;
+  background: rgba(183, 134, 99, 0.25);
+  color: #0D1322;
 }
 
 
@@ -224,10 +213,10 @@ a {
 .gold-gradient {
   background: linear-gradient(
     110deg,
-    #a88318,
-    #e0c35a,
-    #c9a227,
-    #f0d878
+    #9c6d4a,
+    #e8c5ab,
+    #b78663,
+    #f2dfcf
   );
 
   background-size: 200% auto;
@@ -263,7 +252,7 @@ a {
   border: 1px solid var(--color-luxury-gold);
 
   background: var(--color-luxury-gold);
-  color: #090909;
+  color: #ffffff;
 
   font-size: 0.72rem;
   font-weight: 700;
@@ -282,8 +271,8 @@ a {
   background: var(--color-luxury-gold-light);
 
   box-shadow:
-    0 15px 35px rgba(201, 162, 39, 0.22),
-    0 0 25px rgba(201, 162, 39, 0.08);
+    0 15px 35px rgba(183, 134, 99, 0.25),
+    0 0 25px rgba(183, 134, 99, 0.1);
 }
 
 .btn-gold::after {
@@ -320,9 +309,9 @@ a {
   min-height: 48px;
   padding: 0.8rem 1.6rem;
 
-  border: 1px solid #111;
+  border: 1px solid #0D1322;
 
-  background: #111;
+  background: #0D1322;
   color: #fff;
 
   font-size: 0.72rem;
@@ -339,9 +328,9 @@ a {
 .btn-dark:hover {
   transform: translateY(-3px);
 
-  background: #242424;
+  background: #1a2338;
 
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(13, 19, 34, 0.2);
 }
 
 .btn-outline {
@@ -352,10 +341,10 @@ a {
   min-height: 48px;
   padding: 0.8rem 1.6rem;
 
-  border: 1px solid rgba(17, 17, 17, 0.25);
+  border: 1px solid rgba(13, 19, 34, 0.25);
 
   background: transparent;
-  color: #111;
+  color: #0D1322;
 
   font-size: 0.72rem;
   font-weight: 700;
@@ -368,12 +357,12 @@ a {
 .btn-outline:hover {
   transform: translateY(-3px);
 
-  border-color: #111;
+  border-color: #0D1322;
 
-  background: #111;
+  background: #0D1322;
   color: #fff;
 
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 25px rgba(13, 19, 34, 0.15);
 }
 
 
@@ -397,8 +386,8 @@ a {
   transform: translateY(-2px) translateZ(15px);
 
   box-shadow:
-    0 28px 70px rgba(0, 0, 0, 0.25),
-    0 0 35px rgba(201, 162, 39, 0.06);
+    0 28px 70px rgba(13, 19, 34, 0.2),
+    0 0 35px rgba(183, 134, 99, 0.08);
 }
 
 .navbar-floating::before {
@@ -461,15 +450,15 @@ a {
   transform: translateY(-3px) translateZ(15px);
 
   box-shadow:
-    0 12px 25px rgba(0, 0, 0, 0.25),
-    0 0 20px rgba(201, 162, 39, 0.08);
+    0 12px 25px rgba(13, 19, 34, 0.2),
+    0 0 20px rgba(183, 134, 99, 0.1);
 }
 
 
 .nav-link {
   position: relative;
 
-  font-family: "Inter", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   font-size: 0.72rem;
   font-weight: 600;
@@ -517,19 +506,19 @@ a {
   background:
     radial-gradient(
       circle at 78% 25%,
-      rgba(201, 162, 39, 0.14),
+      rgba(183, 134, 99, 0.12),
       transparent 30%
     ),
     radial-gradient(
       circle at 15% 80%,
-      rgba(201, 162, 39, 0.06),
+      rgba(183, 134, 99, 0.05),
       transparent 28%
     ),
     linear-gradient(
       135deg,
-      #f7f4ed 0%,
+      #f4f6f9 0%,
       #fff 48%,
-      #f1ece1 100%
+      #e9edf3 100%
     );
 }
 
@@ -543,12 +532,12 @@ a {
 
   background-image:
     linear-gradient(
-      rgba(0, 0, 0, 0.025) 1px,
+      rgba(13, 19, 34, 0.02) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.025) 1px,
+      rgba(13, 19, 34, 0.02) 1px,
       transparent 1px
     );
 
@@ -581,11 +570,11 @@ a {
 .luxury-card:hover {
   transform: translateY(-8px);
 
-  border-color: rgba(201, 162, 39, 0.35);
+  border-color: rgba(183, 134, 99, 0.4);
 
   box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.09),
-    0 5px 20px rgba(201, 162, 39, 0.05);
+    0 25px 60px rgba(13, 19, 34, 0.08),
+    0 5px 20px rgba(183, 134, 99, 0.06);
 }
 
 .watch-image {
@@ -603,7 +592,7 @@ a {
 .product-image {
   position: relative;
   overflow: hidden;
-  background: #f4f1e9;
+  background: #eaedf3;
 }
 
 .product-image img {
@@ -632,7 +621,7 @@ a {
 
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.45),
+    rgba(13, 19, 34, 0.5),
     transparent 50%
   );
 
@@ -648,9 +637,9 @@ a {
 
   padding: 0.4rem 0.7rem;
 
-  border: 1px solid rgba(201, 162, 39, 0.3);
+  border: 1px solid rgba(183, 134, 99, 0.3);
 
-  background: rgba(201, 162, 39, 0.1);
+  background: rgba(183, 134, 99, 0.1);
 
   color: var(--color-luxury-gold);
 
@@ -665,7 +654,7 @@ a {
 input,
 textarea,
 select {
-  font-family: "Inter", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .workflow-input {
@@ -685,7 +674,7 @@ select {
 }
 
 .workflow-input:hover {
-  border-color: #c8c3b8;
+  border-color: #abb5cc;
 }
 
 .workflow-input:focus {
@@ -696,12 +685,12 @@ select {
   background: #fff;
 
   box-shadow:
-    0 8px 25px rgba(201, 162, 39, 0.08),
-    0 0 0 3px rgba(201, 162, 39, 0.08);
+    0 8px 25px rgba(183, 134, 99, 0.1),
+    0 0 0 3px rgba(183, 134, 99, 0.1);
 }
 
 ::placeholder {
-  color: #aaa;
+  color: #9aa3b8;
 }
 
 
@@ -947,18 +936,18 @@ select {
 
   border-color: var(--color-luxury-gold);
 
-  box-shadow: 0 8px 25px rgba(201, 162, 39, 0.18);
+  box-shadow: 0 8px 25px rgba(183, 134, 99, 0.2);
 }
 
 .workflow-step.active {
   background: var(--color-luxury-gold);
   border-color: var(--color-luxury-gold);
 
-  color: #111;
+  color: #fff;
 
   box-shadow:
-    0 0 0 6px rgba(201, 162, 39, 0.1),
-    0 10px 30px rgba(201, 162, 39, 0.2);
+    0 0 0 6px rgba(183, 134, 99, 0.15),
+    0 10px 30px rgba(183, 134, 99, 0.25);
 }
 
 .workflow-line {
@@ -1090,13 +1079,13 @@ select {
 @keyframes successPulse {
   0%,
   100% {
-    box-shadow: 0 0 0 rgba(201, 162, 39, 0);
+    box-shadow: 0 0 0 rgba(183, 134, 99, 0);
   }
 
   50% {
     box-shadow:
-      0 0 0 12px rgba(201, 162, 39, 0.08),
-      0 0 40px rgba(201, 162, 39, 0.2);
+      0 0 0 12px rgba(183, 134, 99, 0.08),
+      0 0 40px rgba(183, 134, 99, 0.2);
   }
 }
 
@@ -1163,7 +1152,7 @@ select {
 
   border-radius: 50%;
 
-  background: rgba(201, 162, 39, 0.08);
+  background: rgba(183, 134, 99, 0.08);
 
   filter: blur(70px);
 
@@ -1194,15 +1183,15 @@ select {
   }
 
   .heading-xl {
-    font-size: clamp(2.7rem, 14vw, 4.5rem);
+    font-size: clamp(2.4rem, 12vw, 4rem);
   }
 
   .heading-lg {
-    font-size: clamp(2.2rem, 11vw, 3.5rem);
+    font-size: clamp(2rem, 10vw, 3.2rem);
   }
 
   .heading-md {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .workflow-step {
