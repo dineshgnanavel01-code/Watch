@@ -1,0 +1,1318 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap");
+
+@import "tailwindcss";
+
+/* =========================================================
+   TAILWIND THEME
+========================================================= */
+
+@theme {
+  --color-luxury-black: #090909;
+  --color-luxury-dark: #111111;
+  --color-luxury-dark-soft: #181818;
+
+  --color-luxury-gold: #c9a227;
+  --color-luxury-gold-light: #e0c35a;
+  --color-luxury-gold-soft: #f0df9b;
+
+  --color-luxury-cream: #f7f4ed;
+  --color-luxury-white: #ffffff;
+
+  --color-luxury-muted: #77736b;
+  --color-luxury-border: #dedbd2;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* =========================================================
+   ROOT / RESET
+========================================================= */
+
+:root {
+  font-family: "Inter", sans-serif;
+  color: #111111;
+  background: #f7f4ed;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: #f7f4ed;
+  color: #111111;
+
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.font-display {
+  font-family: "Playfair Display", serif;
+}
+
+.font-body {
+  font-family: "Inter", sans-serif;
+}
+
+.heading-xl {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.95;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.heading-lg {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.heading-md {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.luxury-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.luxury-text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-luxury-muted);
+}
+
+/* =========================================================
+   GLOBAL SELECTION
+========================================================= */
+
+::selection {
+  background: rgba(201, 162, 39, 0.25);
+  color: #111;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.container-luxury {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+.section-padding {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  color: var(--color-luxury-gold);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.section-label::before,
+.section-label::after {
+  content: "";
+
+  width: 30px;
+  height: 1px;
+
+  background: var(--color-luxury-gold);
+}
+
+/* =========================================================
+   GOLD ELEMENTS
+========================================================= */
+
+.gold-text {
+  color: var(--color-luxury-gold);
+}
+
+.gold-line {
+  width: 50px;
+  height: 2px;
+
+  background: var(--color-luxury-gold);
+}
+
+.gold-gradient {
+  background: linear-gradient(
+    110deg,
+    #a88318,
+    #e0c35a,
+    #c9a227,
+    #f0d878
+  );
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation: goldGradient 5s linear infinite;
+}
+
+@keyframes goldGradient {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn-gold {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-luxury-gold);
+
+  background: var(--color-luxury-gold);
+  color: #090909;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px);
+
+  background: var(--color-luxury-gold-light);
+
+  box-shadow:
+    0 15px 35px rgba(201, 162, 39, 0.22),
+    0 0 25px rgba(201, 162, 39, 0.08);
+}
+
+.btn-gold::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.7s ease;
+}
+
+.btn-gold:hover::after {
+  left: 140%;
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+
+  border: 1px solid #111;
+
+  background: #111;
+  color: #fff;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.btn-dark:hover {
+  transform: translateY(-3px);
+
+  background: #242424;
+
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+
+  border: 1px solid rgba(17, 17, 17, 0.25);
+
+  background: transparent;
+  color: #111;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  transform: translateY(-3px);
+
+  border-color: #111;
+
+  background: #111;
+  color: #fff;
+
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   3D NAVBAR
+========================================================= */
+
+.navbar-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.navbar-floating {
+  position: relative;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease;
+}
+
+.navbar-floating:hover {
+  transform: translateY(-2px) translateZ(15px);
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.25),
+    0 0 35px rgba(201, 162, 39, 0.06);
+}
+
+.navbar-floating::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 15%,
+      rgba(255, 255, 255, 0.04) 45%,
+      transparent 65%
+    );
+}
+
+.logo-3d {
+  perspective: 800px;
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.logo-3d:hover {
+  transform:
+    rotateY(180deg)
+    rotateX(8deg)
+    scale(1.08);
+}
+
+.nav-3d {
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.nav-3d:hover {
+  transform: translateY(-3px) translateZ(12px);
+}
+
+.nav-icon-3d {
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.nav-icon-3d:hover {
+  transform: translateY(-3px) translateZ(15px);
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(201, 162, 39, 0.08);
+}
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-link {
+  position: relative;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-luxury-gold);
+  transform: translateY(-2px);
+}
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--color-luxury-gold);
+
+  transform: translateX(-50%);
+
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 22px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-gradient {
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 78% 25%,
+      rgba(201, 162, 39, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(201, 162, 39, 0.06),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #f7f4ed 0%,
+      #fff 48%,
+      #f1ece1 100%
+    );
+}
+
+.hero-gradient::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 80%
+  );
+}
+
+/* =========================================================
+   WATCH CARDS
+========================================================= */
+
+.luxury-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-luxury-border);
+
+  background: #fff;
+
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease,
+    border-color 0.4s ease;
+}
+
+.luxury-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(201, 162, 39, 0.35);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.09),
+    0 5px 20px rgba(201, 162, 39, 0.05);
+}
+
+.watch-image {
+  transform-origin: center;
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s ease;
+}
+
+.luxury-card:hover .watch-image {
+  transform: scale(1.06) translateY(-3px);
+}
+
+.product-image {
+  position: relative;
+  overflow: hidden;
+  background: #f4f1e9;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-image:hover img {
+  transform: scale(1.08);
+}
+
+.product-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 1.25rem;
+
+  opacity: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.45),
+    transparent 50%
+  );
+
+  transition: opacity 0.4s ease;
+}
+
+.product-image:hover .product-overlay {
+  opacity: 1;
+}
+
+.product-badge {
+  display: inline-flex;
+
+  padding: 0.4rem 0.7rem;
+
+  border: 1px solid rgba(201, 162, 39, 0.3);
+
+  background: rgba(201, 162, 39, 0.1);
+
+  color: var(--color-luxury-gold);
+
+  font-size: 0.62rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+input,
+textarea,
+select {
+  font-family: "Inter", sans-serif;
+}
+
+.workflow-input {
+  width: 100%;
+
+  border: 1px solid var(--color-luxury-border);
+
+  background: rgba(255, 255, 255, 0.85);
+
+  outline: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.workflow-input:hover {
+  border-color: #c8c3b8;
+}
+
+.workflow-input:focus {
+  transform: translateY(-2px);
+
+  border-color: var(--color-luxury-gold);
+
+  background: #fff;
+
+  box-shadow:
+    0 8px 25px rgba(201, 162, 39, 0.08),
+    0 0 0 3px rgba(201, 162, 39, 0.08);
+}
+
+::placeholder {
+  color: #aaa;
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-drawer {
+  animation: cartDrawer 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cartDrawer {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.cart-item-enter {
+  animation: cartItemEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cartItemEnter {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.cart-badge {
+  animation: cartBadge 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cartBadge {
+  0% {
+    transform: scale(0);
+  }
+
+  70% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.price-update {
+  animation: priceUpdate 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes priceUpdate {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+    color: var(--color-luxury-gold);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   3D ELEMENTS
+========================================================= */
+
+.perspective-3d {
+  perspective: 1200px;
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* =========================================================
+   FLOAT ANIMATION
+========================================================= */
+
+.animate-float {
+  animation: luxuryFloat 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: luxuryFloat 7s ease-in-out infinite;
+}
+
+@keyframes luxuryFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* =========================================================
+   FADE ANIMATIONS
+========================================================= */
+
+.fade-in {
+  animation: fadeIn 0.7s ease both;
+}
+
+.fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   WORKFLOW
+========================================================= */
+
+.workflow-page {
+  animation: workflowPageIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes workflowPageIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.workflow-section {
+  animation: sectionReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.workflow-item {
+  opacity: 0;
+  animation: workflowItem 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.workflow-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.workflow-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.workflow-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.workflow-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.workflow-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.workflow-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes workflowItem {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   WORKFLOW STEPS
+========================================================= */
+
+.workflow-step {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--color-luxury-border);
+  border-radius: 999px;
+
+  background: #fff;
+
+  transition: all 0.4s ease;
+}
+
+.workflow-step:hover {
+  transform: scale(1.08);
+
+  border-color: var(--color-luxury-gold);
+
+  box-shadow: 0 8px 25px rgba(201, 162, 39, 0.18);
+}
+
+.workflow-step.active {
+  background: var(--color-luxury-gold);
+  border-color: var(--color-luxury-gold);
+
+  color: #111;
+
+  box-shadow:
+    0 0 0 6px rgba(201, 162, 39, 0.1),
+    0 10px 30px rgba(201, 162, 39, 0.2);
+}
+
+.workflow-line {
+  position: relative;
+
+  height: 1px;
+
+  flex: 1;
+
+  overflow: hidden;
+
+  background: var(--color-luxury-border);
+}
+
+.workflow-line::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  width: 40%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-luxury-gold),
+    transparent
+  );
+
+  animation: workflowLine 2s ease-in-out infinite;
+}
+
+@keyframes workflowLine {
+  from {
+    transform: translateX(-150%);
+  }
+
+  to {
+    transform: translateX(350%);
+  }
+}
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.add-to-cart-success {
+  animation: cartSuccess 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cartSuccess {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.checkout-step {
+  animation: checkoutStep 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes checkoutStep {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.payment-success {
+  animation: paymentSuccess 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes paymentSuccess {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.1) rotate(2deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+.success-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+
+  border: 2px solid var(--color-luxury-gold);
+  border-radius: 50%;
+
+  animation:
+    successCircle 0.7s ease-out both,
+    successPulse 2s 0.8s ease-in-out infinite;
+}
+
+@keyframes successCircle {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes successPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(201, 162, 39, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 12px rgba(201, 162, 39, 0.08),
+      0 0 40px rgba(201, 162, 39, 0.2);
+  }
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.watch-loader {
+  width: 45px;
+  height: 45px;
+
+  border: 2px solid var(--color-luxury-border);
+  border-top-color: var(--color-luxury-gold);
+
+  border-radius: 50%;
+
+  animation: watchLoader 0.9s linear infinite;
+}
+
+@keyframes watchLoader {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   SHINE
+========================================================= */
+
+.workflow-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.workflow-shine::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.8s ease;
+}
+
+.workflow-shine:hover::after {
+  left: 140%;
+}
+
+/* =========================================================
+   DECORATIVE GOLD ORB
+========================================================= */
+
+.gold-orb {
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  border-radius: 50%;
+
+  background: rgba(201, 162, 39, 0.08);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   SCROLLBAR
+   No scroll progress bar — only browser scrollbar styling.
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1eee6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c9a227;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8861f;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 639px) {
+  html {
+    scroll-padding-top: 85px;
+  }
+
+  .container-luxury {
+    width: min(100% - 1.5rem, 1200px);
+  }
+
+  .section-padding {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .heading-xl {
+    font-size: clamp(2.7rem, 14vw, 4.5rem);
+  }
+
+  .heading-lg {
+    font-size: clamp(2.2rem, 11vw, 3.5rem);
+  }
+
+  .heading-md {
+    font-size: 2rem;
+  }
+
+  .workflow-step {
+    width: 38px;
+    height: 38px;
+  }
+
+  .workflow-line {
+    min-width: 15px;
+  }
+
+  .btn-gold,
+  .btn-dark,
+  .btn-outline {
+    min-height: 46px;
+    padding-inline: 1.2rem;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .container-luxury {
+    width: min(100% - 3rem, 1200px);
+  }
+
+  .section-padding {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+}
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (min-width: 1024px) {
+  .container-luxury {
+    width: min(100% - 4rem, 1200px);
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1440px) {
+  .container-luxury {
+    width: min(100% - 5rem, 1400px);
+  }
+
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .workflow-section,
+  .workflow-item {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
