@@ -1,4 +1,3 @@
-// src/components/InteractiveBackground.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
