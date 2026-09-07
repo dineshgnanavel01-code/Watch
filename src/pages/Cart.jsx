@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Minus, Plus, Trash2, ArrowRight, ShoppingBag } from "lucide-react";
+import { Minus, Plus, Trash2, ArrowRight, ArrowLeft, ShoppingBag, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCart } from "../context/CartContext";
 
@@ -12,22 +12,27 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <main className="flex min-h-[72vh] items-center justify-center px-4 py-16 sm:px-6">
+      <main className="flex min-h-[72vh] w-full items-center justify-center px-4 py-16 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 25, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="w-full max-w-xl border border-white/10 bg-stone-900/80 p-8 text-center shadow-2xl sm:p-14"
         >
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400">
+          <motion.div
+            animate={{ y: [0, -7, 0], rotate: [0, -3, 3, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+            className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400"
+          >
             <ShoppingBag size={26} strokeWidth={1.4} />
-          </div>
+          </motion.div>
           <p className="mt-6 text-[10px] uppercase tracking-[0.35em] text-amber-400">Your Collection Awaits</p>
           <h1 className="mt-3 font-serif text-4xl sm:text-5xl">Your Cart is Empty</h1>
           <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-stone-400">
             Discover a timepiece worthy of your collection, crafted for moments that last.
           </p>
-          <Link to="/collection" className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 bg-amber-500 px-6 text-xs font-semibold uppercase tracking-[0.18em] text-black transition hover:-translate-y-1 hover:bg-amber-400 sm:px-8">
-            Explore Collection <ArrowRight size={16} />
+          <Link to="/collection" className="group mt-8 inline-flex min-h-12 items-center justify-center gap-3 bg-amber-500 px-6 text-xs font-semibold uppercase tracking-[0.18em] text-black transition duration-300 hover:-translate-y-1 hover:bg-amber-400 hover:shadow-[0_12px_35px_rgba(245,158,11,.18)] sm:px-8">
+            Explore Collection <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </main>
@@ -36,11 +41,15 @@ const Cart = () => {
 
   return (
     <main className="mx-auto w-full max-w-7xl overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-      <div className="mb-10 sm:mb-14">
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-10 sm:mb-14"
+      >
         <p className="text-[10px] uppercase tracking-[0.35em] text-amber-400">Private Selection</p>
         <h1 className="mt-3 font-serif text-4xl sm:text-5xl lg:text-6xl">Shopping Cart</h1>
         <p className="mt-3 text-sm text-stone-400">{cart.length} {cart.length === 1 ? "timepiece" : "timepieces"} selected.</p>
-      </div>
+      </motion.div>
 
       <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
         <div className="min-w-0 space-y-4">
@@ -49,8 +58,9 @@ const Cart = () => {
               key={item.id}
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.06 }}
-              className="flex min-w-0 gap-3 border border-white/10 bg-stone-900 p-3 transition hover:border-amber-400/30 sm:gap-5 sm:p-4"
+              transition={{ delay: index * 0.06, duration: 0.5 }}
+              whileHover={{ y: -3 }}
+              className="flex min-w-0 gap-3 border border-white/10 bg-stone-900 p-3 transition duration-300 hover:border-amber-400/30 hover:shadow-[0_15px_45px_rgba(0,0,0,.2)] sm:gap-5 sm:p-4"
             >
               <Link to={`/watch/${item.id}`} className="h-24 w-24 shrink-0 overflow-hidden bg-stone-800 sm:h-36 sm:w-36">
                 <img src={item.image} alt={item.name} className="h-full w-full object-cover transition duration-700 hover:scale-105" />
@@ -58,14 +68,14 @@ const Cart = () => {
 
               <div className="flex min-w-0 flex-1 flex-col py-0.5">
                 <p className="truncate text-[9px] uppercase tracking-[0.25em] text-amber-400">{item.brand}</p>
-                <Link to={`/watch/${item.id}`} className="mt-1 line-clamp-2 font-serif text-base leading-tight hover:text-amber-400 sm:text-xl">{item.name}</Link>
+                <Link to={`/watch/${item.id}`} className="mt-1 line-clamp-2 font-serif text-base leading-tight transition hover:text-amber-400 sm:text-xl">{item.name}</Link>
                 <p className="mt-2 text-sm sm:text-lg">${item.price.toLocaleString()}</p>
 
                 <div className="mt-auto flex items-end justify-between gap-2 pt-3">
                   <div className="flex h-9 items-center border border-white/10 bg-black/20">
-                    <button aria-label={`Decrease ${item.name}`} onClick={() => updateQuantity(item.id, item.quantity - 1)} className="h-full px-2.5 text-stone-400 transition hover:text-amber-400 sm:px-3"><Minus size={13} /></button>
+                    <button aria-label={`Decrease ${item.name}`} onClick={() => updateQuantity(item.id, item.quantity - 1)} className="h-full px-2.5 text-stone-400 transition hover:bg-amber-400/10 hover:text-amber-400 sm:px-3"><Minus size={13} /></button>
                     <span className="w-7 text-center text-xs">{item.quantity}</span>
-                    <button aria-label={`Increase ${item.name}`} onClick={() => updateQuantity(item.id, item.quantity + 1)} className="h-full px-2.5 text-stone-400 transition hover:text-amber-400 sm:px-3"><Plus size={13} /></button>
+                    <button aria-label={`Increase ${item.name}`} onClick={() => updateQuantity(item.id, item.quantity + 1)} className="h-full px-2.5 text-stone-400 transition hover:bg-amber-400/10 hover:text-amber-400 sm:px-3"><Plus size={13} /></button>
                   </div>
                   <button aria-label={`Remove ${item.name}`} onClick={() => removeFromCart(item.id)} className="rounded-lg p-2 text-stone-500 transition hover:bg-red-400/10 hover:text-red-400"><Trash2 size={17} /></button>
                 </div>
@@ -74,7 +84,12 @@ const Cart = () => {
           ))}
         </div>
 
-        <aside className="h-fit border border-white/10 bg-stone-900 p-5 sm:p-7 lg:sticky lg:top-28">
+        <motion.aside
+          initial={{ opacity: 0, x: 25 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="h-fit border border-white/10 bg-stone-900 p-5 shadow-xl sm:p-7 lg:sticky lg:top-28"
+        >
           <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400">Order Summary</p>
           <h2 className="mt-2 font-serif text-2xl">Your Selection</h2>
 
@@ -86,11 +101,21 @@ const Cart = () => {
             <div className="flex justify-between gap-4 text-lg"><span>Total</span><span className="text-amber-400">${total.toFixed(2)}</span></div>
           </div>
 
-          <Link to="/checkout" className="mt-7 flex min-h-12 items-center justify-center gap-3 bg-amber-500 px-5 text-xs font-semibold uppercase tracking-[0.16em] text-black transition hover:-translate-y-1 hover:bg-amber-400">
-            Proceed to Checkout <ArrowRight size={16} />
+          <Link to="/checkout" className="group relative mt-7 flex min-h-14 w-full items-center justify-center gap-3 overflow-hidden bg-amber-500 px-5 text-xs font-semibold uppercase tracking-[0.16em] text-black transition duration-300 hover:-translate-y-1 hover:bg-amber-400 hover:shadow-[0_16px_40px_rgba(245,158,11,.2)]">
+            <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-0" />
+            <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-black/10"><ShoppingBag size={15} /></span>
+            <span className="relative">Secure Checkout</span>
+            <ArrowRight size={16} className="relative transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-          <Link to="/collection" className="mt-3 flex min-h-11 items-center justify-center border border-white/10 text-xs uppercase tracking-[0.14em] text-stone-400 transition hover:border-amber-400/40 hover:text-white">Continue Shopping</Link>
-        </aside>
+
+          <div className="mt-4 flex items-center justify-center gap-2 text-[9px] uppercase tracking-[0.18em] text-stone-500">
+            <ShieldCheck size={13} className="text-amber-400" /> Secure & insured purchase
+          </div>
+
+          <Link to="/collection" className="group mt-4 flex min-h-11 items-center justify-center gap-2 border border-white/10 text-xs uppercase tracking-[0.14em] text-stone-400 transition hover:border-amber-400/40 hover:text-white">
+            <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" /> Continue Shopping
+          </Link>
+        </motion.aside>
       </div>
     </main>
   );
