@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(201,162,39,0.40)] to-transparent sm:inset-x-8" />
 
         <div className="relative flex min-h-[64px] w-full items-center justify-between px-3 sm:min-h-[76px] sm:px-7 lg:px-9">
-          {/* LUXE LOGO - visible on mobile */}
+       
           <Link
             to="/"
             onClick={closeMenu}
@@ -57,7 +57,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop navigation */}
+          
           <div className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (
               <NavLink
@@ -87,7 +87,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right actions */}
+       
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <Link
               to="/login"
@@ -137,7 +137,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        
         <AnimatePresence>
           {menuOpen && (
             <motion.div

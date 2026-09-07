@@ -1,4 +1,4 @@
-// Premium motion presets for the LUXE watch experience.
+
 
 const ease = [0.22, 1, 0.36, 1];
 

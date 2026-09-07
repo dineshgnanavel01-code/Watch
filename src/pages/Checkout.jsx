@@ -189,7 +189,7 @@ const Checkout = () => {
           </button>
         </form>
 
-        {/* Summary */}
+     
         <div className="h-fit border border-white/10 bg-stone-900 p-7">
           <h2 className="font-serif text-2xl">
             Your Order

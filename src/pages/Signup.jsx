@@ -23,7 +23,7 @@ const Signup = () => {
 
     setError("");
 
-    // Mock signup
+   
     navigate("/");
   };
 
