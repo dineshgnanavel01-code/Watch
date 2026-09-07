@@ -1,228 +1,27 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, CreditCard, LockKeyhole, Truck } from "lucide-react";
+import { motion } from "framer-motion";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
   const { cart, cartTotal, clearCart } = useCart();
-  const navigate = useNavigate();
-
   const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", address: "", city: "", postalCode: "", payment: "Card" });
+  const shipping = cartTotal >= 500 || cartTotal === 0 ? 0 : 25;
+  const tax = cartTotal * 0.08;
+  const total = cartTotal + shipping + tax;
+  const handleChange = (e) => setForm((current) => ({ ...current, [e.target.name]: e.target.value }));
+  const handleSubmit = (e) => { e.preventDefault(); clearCart(); setSubmitted(true); };
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    address: "",
-    city: "",
-    postalCode: "",
-    payment: "Card",
-  });
+  if (submitted) return <main className="flex min-h-[75vh] items-center justify-center px-6"><motion.div initial={{ opacity: 0, scale: .9 }} animate={{ opacity: 1, scale: 1 }} className="max-w-xl text-center"><CheckCircle size={68} className="mx-auto text-amber-400" /><h1 className="heading-lg mt-7 text-white">Order Confirmed</h1><p className="mt-5 leading-7 text-stone-400">Thank you for choosing LUXE. Your private order has been successfully placed.</p><Link to="/collection" className="btn-gold mt-8">Continue Shopping</Link></motion.div></main>;
+  if (!cart.length) return <main className="flex min-h-[75vh] items-center justify-center px-6"><div className="text-center"><h1 className="heading-md text-white">Your Cart is Empty</h1><Link to="/collection" className="mt-6 inline-block text-amber-400">Return to Collection</Link></div></main>;
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    clearCart();
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <main className="flex min-h-[70vh] items-center justify-center px-6">
-        <div className="max-w-xl text-center">
-          <CheckCircle
-            size={65}
-            className="mx-auto text-amber-400"
-          />
-
-          <h1 className="mt-7 font-serif text-5xl">
-            Order Confirmed
-          </h1>
-
-          <p className="mt-5 leading-7 text-stone-400">
-            Thank you for choosing LUXE. Your order has been
-            successfully placed.
-          </p>
-
-          <Link
-            to="/collection"
-            className="mt-8 inline-block bg-amber-500 px-7 py-4 text-xs uppercase tracking-widest text-black"
-          >
-            Continue Shopping
-          </Link>
-        </div>
-      </main>
-    );
-  }
-
-  if (cart.length === 0) {
-    return (
-      <main className="flex min-h-[70vh] items-center justify-center px-6">
-        <div className="text-center">
-          <h1 className="font-serif text-4xl">
-            Your Cart is Empty
-          </h1>
-
-          <Link
-            to="/collection"
-            className="mt-6 inline-block text-amber-400"
-          >
-            Go to Collection
-          </Link>
-        </div>
-      </main>
-    );
-  }
-
-  return (
-    <main className="mx-auto max-w-6xl px-6 py-16">
-      <h1 className="font-serif text-5xl">
-        Checkout
-      </h1>
-
-      <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_350px]">
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6"
-        >
-          <div>
-            <label className="mb-2 block text-xs uppercase tracking-widest text-stone-500">
-              Full Name
-            </label>
-
-            <input
-              required
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500"
-            />
-          </div>
-
-          <div>
-            <label className="mb-2 block text-xs uppercase tracking-widest text-stone-500">
-              Email
-            </label>
-
-            <input
-              required
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500"
-            />
-          </div>
-
-          <div>
-            <label className="mb-2 block text-xs uppercase tracking-widest text-stone-500">
-              Address
-            </label>
-
-            <input
-              required
-              name="address"
-              value={form.address}
-              onChange={handleChange}
-              className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500"
-            />
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div>
-              <label className="mb-2 block text-xs uppercase tracking-widest text-stone-500">
-                City
-              </label>
-
-              <input
-                required
-                name="city"
-                value={form.city}
-                onChange={handleChange}
-                className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500"
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-xs uppercase tracking-widest text-stone-500">
-                Postal Code
-              </label>
-
-              <input
-                required
-                name="postalCode"
-                value={form.postalCode}
-                onChange={handleChange}
-                className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="mb-2 block text-xs uppercase tracking-widest text-stone-500">
-              Payment Method
-            </label>
-
-            <select
-              name="payment"
-              value={form.payment}
-              onChange={handleChange}
-              className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500"
-            >
-              <option>Card</option>
-              <option>PayPal</option>
-              <option>Cash on Delivery</option>
-            </select>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-amber-500 py-4 text-xs font-semibold uppercase tracking-widest text-black hover:bg-amber-400"
-          >
-            Place Order
-          </button>
-        </form>
-
-        {/* Summary */}
-        <div className="h-fit border border-white/10 bg-stone-900 p-7">
-          <h2 className="font-serif text-2xl">
-            Your Order
-          </h2>
-
-          <div className="mt-6 space-y-4">
-            {cart.map((item) => (
-              <div
-                key={item.id}
-                className="flex justify-between gap-4 text-sm"
-              >
-                <span className="text-stone-400">
-                  {item.name} × {item.quantity}
-                </span>
-
-                <span>
-                  $
-                  {(item.price * item.quantity).toFixed(2)}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="my-6 h-px bg-white/10" />
-
-          <div className="flex justify-between text-lg">
-            <span>Total</span>
-            <span>${cartTotal.toFixed(2)}</span>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+  const input = "mt-2 w-full border border-white/10 bg-stone-900 px-4 py-4 text-sm text-white outline-none transition focus:border-amber-400";
+  return <main className="mx-auto max-w-6xl px-6 py-12 lg:px-10 lg:py-16"><div className="mb-12"><p className="section-label">Secure Checkout</p><h1 className="heading-lg mt-5 text-white">Complete your purchase.</h1></div><div className="grid gap-12 lg:grid-cols-[1fr_380px]">
+    <form onSubmit={handleSubmit} className="space-y-7"><div className="border border-white/10 bg-stone-900 p-6 sm:p-8"><div className="flex items-center gap-3"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-400 text-xs font-bold text-black">1</span><h2 className="font-display text-2xl text-white">Shipping details</h2></div><div className="mt-7 space-y-5"><label className="block text-xs uppercase tracking-widest text-stone-500">Full Name<input required name="name" value={form.name} onChange={handleChange} className={input} /></label><label className="block text-xs uppercase tracking-widest text-stone-500">Email<input required type="email" name="email" value={form.email} onChange={handleChange} className={input} /></label><label className="block text-xs uppercase tracking-widest text-stone-500">Address<input required name="address" value={form.address} onChange={handleChange} className={input} /></label><div className="grid gap-5 sm:grid-cols-2"><label className="block text-xs uppercase tracking-widest text-stone-500">City<input required name="city" value={form.city} onChange={handleChange} className={input} /></label><label className="block text-xs uppercase tracking-widest text-stone-500">Postal Code<input required name="postalCode" value={form.postalCode} onChange={handleChange} className={input} /></label></div></div></div>
+    <div className="border border-white/10 bg-stone-900 p-6 sm:p-8"><div className="flex items-center gap-3"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-400 text-xs font-bold text-black">2</span><h2 className="font-display text-2xl text-white">Payment method</h2></div><div className="mt-7 grid gap-3 sm:grid-cols-3">{["Card", "PayPal", "Cash on Delivery"].map((method) => <label key={method} className={`cursor-pointer border p-4 text-xs uppercase tracking-widest transition ${form.payment === method ? "border-amber-400 bg-amber-400/5 text-amber-400" : "border-white/10 text-stone-400 hover:border-white/30"}`}><input type="radio" name="payment" value={method} checked={form.payment === method} onChange={handleChange} className="sr-only" />{method}</label>)}</div>{form.payment === "Card" && <div className="mt-5 flex items-center gap-3 border border-white/10 bg-black/20 p-4 text-xs text-stone-500"><CreditCard size={18} className="text-amber-400" /> Demo checkout — no real card details are collected.</div>}</div><button type="submit" className="btn-gold w-full"><LockKeyhole size={16} className="mr-3" /> Place Secure Order</button></form>
+    <aside className="h-fit border border-white/10 bg-stone-900 p-7 lg:sticky lg:top-28"><h2 className="font-display text-2xl text-white">Order Summary</h2><div className="mt-7 space-y-5">{cart.map((item) => <div key={item.id} className="flex gap-4"><img src={item.image} alt={item.name} className="h-16 w-16 object-cover" /><div className="flex-1"><p className="text-xs text-white">{item.name}</p><p className="mt-1 text-[10px] uppercase tracking-widest text-stone-500">{item.brand} × {item.quantity}</p></div><span className="text-sm text-white">${(item.price * item.quantity).toLocaleString()}</span></div>)}</div><div className="my-7 h-px bg-white/10"/><div className="space-y-3 text-sm"><div className="flex justify-between"><span className="text-stone-500">Subtotal</span><span>${cartTotal.toFixed(2)}</span></div><div className="flex justify-between"><span className="text-stone-500">Shipping</span><span>{shipping ? `$${shipping.toFixed(2)}` : "Free"}</span></div><div className="flex justify-between"><span className="text-stone-500">Tax</span><span>${tax.toFixed(2)}</span></div><div className="my-5 h-px bg-white/10"/><div className="flex justify-between text-lg"><span>Total</span><span className="text-amber-400">${total.toFixed(2)}</span></div></div><div className="mt-7 flex gap-3 border-t border-white/10 pt-5 text-[10px] uppercase tracking-widest text-stone-500"><Truck size={16} className="text-amber-400"/> Insured worldwide delivery</div></aside>
+  </div></main>;
 };
-
 export default Checkout;
