@@ -21,11 +21,7 @@ const Navbar = () => {
         initial={{ opacity: 0, y: -25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-<<<<<<< HEAD
         className="navbar-3d navbar-floating relative mx-auto w-full max-w-full overflow-visible rounded-none border-x-0 border-y border-white/10 bg-[#111111]/95 backdrop-blur-xl sm:rounded-2xl sm:border"
-=======
-        className="navbar-3d navbar-floating relative mx-auto w-full max-w-7xl overflow-visible rounded-none border-x-0 border-y border-white/10 bg-[#111111]/95 backdrop-blur-xl sm:rounded-2xl sm:border"
->>>>>>> dc0c48381bee186a542d9083e187f17e10773db7
         style={{ transformStyle: "preserve-3d" }}
       >
         <div className="pointer-events-none absolute -inset-1 -z-10 rounded-2xl bg-[rgba(201,162,39,0.10)] blur-2xl" />

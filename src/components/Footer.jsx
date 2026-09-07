@@ -22,11 +22,7 @@ const Footer = () => {
       <div className="pointer-events-none absolute -bottom-24 left-1/2 h-72 w-[90vw] -translate-x-1/2 rounded-full bg-amber-400/[0.05] blur-3xl" />
       <div className="pointer-events-none absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-amber-400/40 to-transparent" />
 
-<<<<<<< HEAD
       <div className="relative mx-auto w-full max-w-full px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-=======
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
->>>>>>> dc0c48381bee186a542d9083e187f17e10773db7
         <div className="grid w-full grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] lg:gap-12">
           <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="min-w-0">
             <Link to="/" className="inline-flex max-w-full items-center gap-3">
