@@ -107,4 +107,8 @@ export const carousel3D = {
   center: { scale: 1, opacity: 1, rotateY: 0, zIndex: 10 },
   left: { scale: 0.85, opacity: 0.5, rotateY: 35, x: -100, zIndex: 5 },
   right: { scale: 0.85, opacity: 0.5, rotateY: -35, x: 100, zIndex: 5 },
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> c8fb02bf5ee59c6c30d898dbfe4f1b0790897510
