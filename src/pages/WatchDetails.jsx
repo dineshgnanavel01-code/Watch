@@ -14,7 +14,7 @@ const WatchDetails = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [added, setAdded] = useState(false);
 
-  if (!watch) return <main className="flex min-h-[70vh] items-center justify-center px-4"><div className="text-center"><h1 className="font-display text-4xl text-white">Watch Not Found</h1><Link to="/collection" className="mt-6 inline-block text-amber-400">Back to Collection</Link></div></main>;
+  if (!watch) return <main className="flex min-h-[70vh] items-center justify-center px-4"><div className="text-center"><h1 className="font-display text-4xl text-white">Watch Not Found</h1><Link to="/collection" className="mt-6 inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors"><ArrowLeft size={16} />Back to Collection</Link></div></main>;
 
   const gallery = [watch.image, watch.image, watch.image];
   const related = watches.filter((w) => w.id !== watch.id && (w.category === watch.category || w.brand === watch.brand)).slice(0, 3);
@@ -26,10 +26,17 @@ const WatchDetails = () => {
   };
 
   return (
-    <main className="mx-auto w-full max-w-full overflow-hidden px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
-      <Link to="/collection" className="mb-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-stone-400 transition hover:text-amber-400">
-        <ArrowLeft size={15} /> Back to Collection
-      </Link>
+    <main className="mx-auto w-full max-w-full overflow-hidden px-4 pt-32 pb-10 sm:px-6 sm:pt-36 sm:pb-14 lg:px-8 lg:pt-40 lg:pb-16">
+      <div className="mb-8">
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-stone-400 hover:text-amber-400 transition-colors cursor-pointer"
+        >
+          <ArrowLeft size={16} />
+          Back
+        </button>
+      </div>
       
       <div className="grid min-w-0 gap-9 lg:grid-cols-2 lg:gap-14">
         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="min-w-0 lg:sticky lg:top-28 lg:self-start">
@@ -54,7 +61,7 @@ const WatchDetails = () => {
                 type="button" 
                 onClick={() => setActiveImage(index)} 
                 aria-label={`View ${index + 1}`} 
-                className={`overflow-hidden border transition ${activeImage === index ? "border-amber-400" : "border-white/10 hover:border-white/30"}`}
+                className={`overflow-hidden border transition cursor-pointer ${activeImage === index ? "border-amber-400" : "border-white/10 hover:border-white/30"}`}
               >
                 <img src={image} alt={`${watch.name} view ${index + 1}`} className="aspect-square w-full object-cover transition duration-500 hover:scale-105" />
               </button>
@@ -102,11 +109,11 @@ const WatchDetails = () => {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <span className="text-xs uppercase tracking-widest text-stone-500">Quantity</span>
             <div className="flex h-11 items-center border border-white/10">
-              <button type="button" onClick={() => setQuantity((q) => Math.max(1, q - 1))} className="h-full px-3 text-stone-400 transition hover:text-amber-400">
+              <button type="button" onClick={() => setQuantity((q) => Math.max(1, q - 1))} className="h-full px-3 text-stone-400 transition hover:text-amber-400 cursor-pointer">
                 <Minus size={15} />
               </button>
               <span className="w-9 text-center text-sm">{quantity}</span>
-              <button type="button" onClick={() => setQuantity((q) => q + 1)} className="h-full px-3 text-stone-400 transition hover:text-amber-400">
+              <button type="button" onClick={() => setQuantity((q) => q + 1)} className="h-full px-3 text-stone-400 transition hover:text-amber-400 cursor-pointer">
                 <Plus size={15} />
               </button>
             </div>
@@ -114,7 +121,7 @@ const WatchDetails = () => {
           </div>
 
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
-            <button type="button" onClick={addQuantity} className="btn-gold w-full flex items-center justify-center">
+            <button type="button" onClick={addQuantity} className="btn-gold w-full flex items-center justify-center cursor-pointer">
               <ShoppingBag size={16} className="mr-3" /> 
               {added ? "Added to Cart" : "Add to Cart"} 
               {added && <Check size={15} className="ml-2" />}
@@ -122,7 +129,7 @@ const WatchDetails = () => {
             <button 
               type="button" 
               onClick={() => { addQuantity(); navigate("/checkout"); }} 
-              className="btn-outline w-full flex items-center justify-center ![border-color:rgba(255,255,255,0.2)] !text-white hover:![border-color:#fbbf24] hover:!bg-amber-400 hover:!text-black"           
+              className="btn-outline w-full flex items-center justify-center ![border-color:rgba(255,255,255,0.2)] !text-white hover:![border-color:#fbbf24] hover:!bg-amber-400 hover:!text-black cursor-pointer"          
             >
               <Zap size={16} className="mr-3" /> Buy Now
             </button>
@@ -142,8 +149,7 @@ const WatchDetails = () => {
           </div>
         </motion.div>
       </div>
-
-     
+      
       <section className="mt-20 border-t border-white/10 pt-16 sm:mt-28 sm:pt-20">
         <div className="text-center">
           <p className="section-label">Collector Reviews</p>
@@ -173,7 +179,6 @@ const WatchDetails = () => {
         </div>
       </section>
 
-   
       {related.length > 0 && (
         <section className="mt-20 sm:mt-28">
           <div className="mb-8 sm:mb-10">

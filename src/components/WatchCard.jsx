@@ -40,7 +40,7 @@ const WatchCard = ({ watch }) => {
             {watch.brand}
           </p>
 
-          {/* Indian Rupee Price */}
+          
           <span className="font-serif text-lg font-medium text-white">
             ₹{watch.price.toLocaleString("en-IN")}
           </span>

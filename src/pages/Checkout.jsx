@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowLeft } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
@@ -34,7 +34,7 @@ const Checkout = () => {
 
   if (submitted) {
     return (
-      <main className="flex min-h-[70vh] items-center justify-center px-6">
+      <main className="flex min-h-[70vh] items-center justify-center px-6 pt-32">
         <div className="max-w-xl text-center">
           <CheckCircle
             size={65}
@@ -52,7 +52,7 @@ const Checkout = () => {
 
           <Link
             to="/collection"
-            className="mt-8 inline-block bg-amber-500 px-7 py-4 text-xs uppercase tracking-widest text-black"
+            className="mt-8 inline-block bg-amber-500 px-7 py-4 text-xs uppercase tracking-widest text-black hover:bg-amber-400 transition-colors"
           >
             Continue Shopping
           </Link>
@@ -63,7 +63,7 @@ const Checkout = () => {
 
   if (cart.length === 0) {
     return (
-      <main className="flex min-h-[70vh] items-center justify-center px-6">
+      <main className="flex min-h-[70vh] items-center justify-center px-6 pt-32">
         <div className="text-center">
           <h1 className="font-serif text-4xl">
             Your Cart is Empty
@@ -71,8 +71,9 @@ const Checkout = () => {
 
           <Link
             to="/collection"
-            className="mt-6 inline-block text-amber-400"
+            className="mt-6 inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors"
           >
+            <ArrowLeft size={16} />
             Go to Collection
           </Link>
         </div>
@@ -81,7 +82,18 @@ const Checkout = () => {
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-16">
+    <main className="mx-auto max-w-6xl px-6 pt-32 pb-16">
+      <div className="mb-8">
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-stone-400 hover:text-amber-400 transition-colors cursor-pointer"
+        >
+          <ArrowLeft size={16} />
+          Back
+        </button>
+      </div>
+
       <h1 className="font-serif text-5xl">
         Checkout
       </h1>
@@ -173,7 +185,7 @@ const Checkout = () => {
               name="payment"
               value={form.payment}
               onChange={handleChange}
-              className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500"
+              className="w-full border border-white/10 bg-stone-900 px-4 py-4 outline-none focus:border-amber-500 cursor-pointer"
             >
               <option>Card</option>
               <option>PayPal</option>
@@ -183,13 +195,12 @@ const Checkout = () => {
 
           <button
             type="submit"
-            className="w-full bg-amber-500 py-4 text-xs font-semibold uppercase tracking-widest text-black hover:bg-amber-400"
+            className="w-full bg-amber-500 py-4 text-xs font-semibold uppercase tracking-widest text-black hover:bg-amber-400 transition-colors cursor-pointer"
           >
             Place Order
           </button>
         </form>
 
-     
         <div className="h-fit border border-white/10 bg-stone-900 p-7">
           <h2 className="font-serif text-2xl">
             Your Order

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ShoppingBag, User, Menu, X, Watch, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +7,7 @@ import { useCart } from "../context/CartContext";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { cartCount } = useCart();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -14,6 +15,13 @@ const Navbar = () => {
   ];
 
   const closeMenu = () => setMenuOpen(false);
+
+  const handleNavClick = (e, path) => {
+    e.preventDefault();
+    closeMenu();
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full px-0 pt-0 sm:px-3 sm:pt-3 lg:px-6">
@@ -31,8 +39,8 @@ const Navbar = () => {
           
           <Link
             to="/"
-            onClick={closeMenu}
-            className="group flex min-w-0 shrink-0 items-center gap-2 xs:gap-2.5 sm:gap-3"
+            onClick={(e) => handleNavClick(e, "/")}
+            className="group flex min-w-0 shrink-0 items-center gap-2 xs:gap-2.5 sm:gap-3 cursor-pointer"
             aria-label="Luxe Timepieces Home"
           >
             <motion.div
@@ -63,12 +71,12 @@ const Navbar = () => {
               <NavLink
                 key={link.path}
                 to={link.path}
+                onClick={(e) => handleNavClick(e, link.path)}
                 className={({ isActive }) =>
-                  `nav-3d group relative rounded-xl px-5 py-3 text-[11px] font-medium uppercase tracking-[0.22em] ${
+                  `nav-3d group relative rounded-xl px-5 py-3 text-[11px] font-medium uppercase tracking-[0.22em] cursor-pointer ${
                     isActive ? "text-[#c9a227]" : "text-white/60 hover:text-white"
                   }`
-                }
-              >
+                } >
                 {({ isActive }) => (
                   <>
                     {isActive && (
@@ -91,7 +99,8 @@ const Navbar = () => {
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <Link
               to="/login"
-              className="nav-icon-3d hidden h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:flex hover:border-[rgba(201,162,39,0.4)] hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, "/login")}
+              className="nav-icon-3d hidden h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:flex hover:border-[rgba(201,162,39,0.4)] hover:text-white transition-colors cursor-pointer"
               aria-label="Account"
             >
               <User size={18} strokeWidth={1.5} />
@@ -99,7 +108,8 @@ const Navbar = () => {
 
             <Link
               to="/cart"
-              className="nav-icon-3d relative flex h-8 w-8 xs:h-9 xs:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:h-10 sm:w-10 hover:border-[rgba(201,162,39,0.4)] hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, "/cart")}
+              className="nav-icon-3d relative flex h-8 w-8 xs:h-9 xs:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 sm:h-10 sm:w-10 hover:border-[rgba(201,162,39,0.4)] hover:text-white transition-colors cursor-pointer"
               aria-label={`Shopping Cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
             >
               <ShoppingBag className="h-4 w-4 xs:h-[18px] xs:w-[18px]" strokeWidth={1.5} />
@@ -118,7 +128,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="nav-icon-3d flex h-8 w-8 xs:h-9 xs:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/85 sm:h-10 sm:w-10 md:hidden hover:border-[rgba(201,162,39,0.4)] transition-colors"
+              className="nav-icon-3d flex h-8 w-8 xs:h-9 xs:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/85 sm:h-10 sm:w-10 md:hidden hover:border-[rgba(201,162,39,0.4)] transition-colors cursor-pointer"
               aria-label={menuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
               aria-expanded={menuOpen}
             >
@@ -151,9 +161,9 @@ const Navbar = () => {
                   <NavLink
                     key={link.path}
                     to={link.path}
-                    onClick={closeMenu}
+                    onClick={(e) => handleNavClick(e, link.path)}
                     className={({ isActive }) =>
-                      `group flex items-center justify-between rounded-xl border px-3.5 py-3 xs:px-4 xs:py-3.5 text-[11px] xs:text-xs font-medium uppercase tracking-[0.18em] xs:tracking-[0.2em] transition-all ${
+                      `group flex items-center justify-between rounded-xl border px-3.5 py-3 xs:px-4 xs:py-3.5 text-[11px] xs:text-xs font-medium uppercase tracking-[0.18em] xs:tracking-[0.2em] transition-all cursor-pointer ${
                         isActive
                           ? "border-[rgba(201,162,39,0.20)] bg-[rgba(201,162,39,0.10)] text-[#c9a227]"
                           : "border-white/5 bg-white/[0.02] text-white/70 hover:border-[rgba(201,162,39,0.20)] hover:text-[#c9a227]"
@@ -166,8 +176,8 @@ const Navbar = () => {
                 ))}
                 <NavLink
                   to="/login"
-                  onClick={closeMenu}
-                  className="group flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.02] px-3.5 py-3 xs:px-4 xs:py-3.5 text-[11px] xs:text-xs font-medium uppercase tracking-[0.18em] xs:tracking-[0.2em] text-white/70 transition-all hover:border-[rgba(201,162,39,0.20)] hover:text-[#c9a227]"
+                  onClick={(e) => handleNavClick(e, "/login")}
+                  className="group flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.02] px-3.5 py-3 xs:px-4 xs:py-3.5 text-[11px] xs:text-xs font-medium uppercase tracking-[0.18em] xs:tracking-[0.2em] text-white/70 transition-all hover:border-[rgba(201,162,39,0.20)] hover:text-[#c9a227] cursor-pointer"
                 >
                   Account / Login
                   <User size={15} />
