@@ -28,7 +28,11 @@ const Collection = () => {
   const clearAllFilters = () => { setCategory("All"); setSelectedBrand("All"); setMaxPrice(50000); setSearch(""); setSortBy("featured"); };
   const FilterPanel = () => <div className="space-y-7"><div className="flex items-center justify-between border-b border-white/10 pb-4"><h3 className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">Filter Vault</h3><button type="button" onClick={clearAllFilters} className="text-[10px] uppercase tracking-widest text-stone-500 transition hover:text-amber-400">Reset All</button></div><div><h4 className="mb-3 font-display text-lg text-white">Category</h4><div className="flex flex-wrap gap-2 lg:flex-col">{categories.map((item) => <button type="button" key={item} onClick={() => setCategory(item)} className={`rounded-sm px-3 py-2 text-left text-xs uppercase tracking-wider transition ${category === item ? "bg-amber-400/10 text-amber-400" : "text-stone-400 hover:bg-white/5 hover:text-white"}`}>{item}</button>)}</div></div><div><h4 className="mb-3 font-display text-lg text-white">Brand</h4><div className="flex flex-wrap gap-2 lg:flex-col">{brands.map((brand) => <button type="button" key={brand} onClick={() => setSelectedBrand(brand)} className={`rounded-sm px-3 py-2 text-left text-xs uppercase tracking-wider transition ${selectedBrand === brand ? "bg-amber-400/10 text-amber-400" : "text-stone-400 hover:bg-white/5 hover:text-white"}`}>{brand}</button>)}</div></div><div><div className="mb-2 flex justify-between"><h4 className="font-display text-lg text-white">Max Price</h4><span className="text-xs text-amber-400">${maxPrice.toLocaleString()}</span></div><input aria-label="Maximum price" type="range" min="1000" max="50000" step="1000" value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="w-full accent-amber-400" /></div></div>;
 
+<<<<<<< HEAD
   return <main className="mx-auto w-full max-w-full overflow-hidden px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
+=======
+  return <main className="mx-auto w-full max-w-7xl overflow-hidden px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
+>>>>>>> dc0c48381bee186a542d9083e187f17e10773db7
     <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mx-auto mb-10 max-w-3xl text-center sm:mb-14"><p className="section-label">Curated Masterpieces</p><h1 className="heading-lg mt-5 text-white">The Grand Collection</h1><p className="mt-5 text-sm leading-7 text-stone-400 sm:text-base">Explore an exclusive vault of precision timepieces, embodying heritage craftsmanship, legendary complications, and timeless sophistication.</p></motion.div>
 
     <div className="mb-7 flex flex-col gap-3 border-b border-white/10 pb-5 sm:mb-10 sm:gap-4 sm:pb-6 md:flex-row md:items-center md:justify-between">
@@ -41,4 +45,8 @@ const Collection = () => {
     <AnimatePresence>{mobileFiltersOpen && <div className="fixed inset-0 z-[70] lg:hidden"><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileFiltersOpen(false)} className="absolute inset-0 bg-black/80 backdrop-blur-sm"/><motion.aside initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", stiffness: 280, damping: 30 }} className="absolute right-0 h-full w-[92%] max-w-sm overflow-y-auto border-l border-white/10 bg-stone-950 p-5 sm:p-6"><div className="mb-7 flex items-center justify-between border-b border-white/10 pb-5"><span className="text-xs uppercase tracking-[0.25em] text-amber-400">Filters</span><button type="button" onClick={() => setMobileFiltersOpen(false)} aria-label="Close filters" className="text-stone-400 hover:text-white"><X /></button></div><FilterPanel/><button type="button" onClick={() => setMobileFiltersOpen(false)} className="mt-8 w-full bg-amber-500 py-4 text-xs font-semibold uppercase tracking-widest text-black">View {filteredWatches.length} Watches</button></motion.aside></div>}</AnimatePresence>
   </main>;
 };
+<<<<<<< HEAD
 export default Collection;
+=======
+export default Collection;
+>>>>>>> dc0c48381bee186a542d9083e187f17e10773db7

@@ -17,7 +17,11 @@ const Cart = () => {
           initial={{ opacity: 0, y: 25, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+<<<<<<< HEAD
           className="w-full max-w-full border border-white/10 bg-stone-900/80 p-8 text-center shadow-2xl sm:p-14"
+=======
+          className="w-full max-w-xl border border-white/10 bg-stone-900/80 p-8 text-center shadow-2xl sm:p-14"
+>>>>>>> dc0c48381bee186a542d9083e187f17e10773db7
         >
           <motion.div
             animate={{ y: [0, -7, 0], rotate: [0, -3, 3, 0] }}

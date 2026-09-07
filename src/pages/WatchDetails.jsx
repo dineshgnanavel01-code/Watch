@@ -24,7 +24,11 @@ const WatchDetails = () => {
     window.setTimeout(() => setAdded(false), 1800);
   };
 
+<<<<<<< HEAD
   return <main className="mx-auto w-full max-w-full overflow-hidden px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+=======
+  return <main className="mx-auto w-full max-w-7xl overflow-hidden px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+>>>>>>> dc0c48381bee186a542d9083e187f17e10773db7
     <Link to="/collection" className="mb-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-stone-400 transition hover:text-amber-400"><ArrowLeft size={15} /> Back to Collection</Link>
     <div className="grid min-w-0 gap-9 lg:grid-cols-2 lg:gap-14">
       <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="min-w-0 lg:sticky lg:top-28 lg:self-start">
@@ -59,4 +63,8 @@ const WatchDetails = () => {
     {related.length > 0 && <section className="mt-20 sm:mt-28"><div className="mb-8 sm:mb-10"><p className="section-label">You May Also Like</p><h2 className="heading-md mt-5 text-white">Related Timepieces</h2></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{related.map((item) => <Link to={`/watch/${item.id}`} key={item.id} className="group border border-white/10 bg-stone-900 p-3.5 sm:p-4"><div className="overflow-hidden"><img src={item.image} alt={item.name} className="aspect-square w-full object-cover transition duration-700 group-hover:scale-105" /></div><p className="mt-4 text-[9px] uppercase tracking-widest text-amber-400">{item.brand}</p><h3 className="mt-2 font-display text-xl text-white group-hover:text-amber-400 sm:text-2xl">{item.name}</h3><p className="mt-2 text-sm text-stone-400">${item.price.toLocaleString()}</p></Link>)}</div></section>}
   </main>;
 };
+<<<<<<< HEAD
 export default WatchDetails;
+=======
+export default WatchDetails;
+>>>>>>> dc0c48381bee186a542d9083e187f17e10773db7
