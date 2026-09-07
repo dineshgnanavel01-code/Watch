@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -9,48 +10,31 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-
 import { CartProvider } from "./context/CartContext";
+import InteractiveBackground from "./components/InteractiveBackground";
+// Removed the incorrect "../../animations" import from here!
 
 function App() {
   return (
     <CartProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-stone-950 text-white">
+        <InteractiveBackground>
           <Navbar />
 
-          <main>
+          <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route
-                path="/collection"
-                element={<Collection />}
-              />
-              <Route
-                path="/watch/:id"
-                element={<WatchDetails />}
-              />
-              <Route
-                path="/cart"
-                element={<Cart />}
-              />
-              <Route
-                path="/checkout"
-                element={<Checkout />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
+              <Route path="/collection" element={<Collection />} />
+              <Route path="/watch/:id" element={<WatchDetails />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
             </Routes>
           </main>
 
           <Footer />
-        </div>
+        </InteractiveBackground>
       </BrowserRouter>
     </CartProvider>
   );
