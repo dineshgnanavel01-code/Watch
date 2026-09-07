@@ -2,9 +2,6 @@
 
 @import "tailwindcss";
 
-/* =========================================================
-   TAILWIND THEME
-========================================================= */
 
 @theme {
   --color-luxury-black: #090909;
@@ -25,9 +22,7 @@
   --font-body: "Inter", sans-serif;
 }
 
-/* =========================================================
-   ROOT / RESET
-========================================================= */
+
 
 :root {
   font-family: "Inter", sans-serif;
@@ -40,10 +35,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Firefox */
+
   scrollbar-width: none;
 
-  /* Old IE / Edge */
+  
   -ms-overflow-style: none;
 }
 
@@ -53,22 +48,19 @@
   box-sizing: border-box;
 }
 
-/* =========================================================
-   SMOOTH SCROLLING + HIDDEN SCROLLBAR
-========================================================= */
+
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
 
-  /* Firefox */
+ 
   scrollbar-width: none;
 
-  /* IE / old Edge */
+  
   -ms-overflow-style: none;
 }
 
-/* Chrome / Edge / Safari */
 html::-webkit-scrollbar {
   display: none;
   width: 0;
@@ -85,27 +77,24 @@ body {
 
   font-family: "Inter", sans-serif;
 
-  /* Keep scrolling enabled */
   overflow-x: hidden;
   overflow-y: auto;
 
-  /* Smooth touch scrolling */
   -webkit-overflow-scrolling: touch;
 
-  /* Better scrolling behavior */
+ 
   overscroll-behavior-y: smooth;
 
-  /* Hide scrollbar in Firefox */
+
   scrollbar-width: none;
 
-  /* Hide scrollbar in old IE / Edge */
+  
   -ms-overflow-style: none;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Chrome / Edge / Safari */
 body::-webkit-scrollbar {
   display: none;
   width: 0;
@@ -133,9 +122,6 @@ a {
   text-decoration: none;
 }
 
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
 
 .font-display {
   font-family: "Playfair Display", serif;
@@ -182,18 +168,14 @@ a {
   color: var(--color-luxury-muted);
 }
 
-/* =========================================================
-   GLOBAL SELECTION
-========================================================= */
+
 
 ::selection {
   background: rgba(201, 162, 39, 0.25);
   color: #111;
 }
 
-/* =========================================================
-   LAYOUT
-========================================================= */
+
 
 .container-luxury {
   width: min(100% - 2rem, 1200px);
@@ -227,10 +209,6 @@ a {
 
   background: var(--color-luxury-gold);
 }
-
-/* =========================================================
-   GOLD ELEMENTS
-========================================================= */
 
 .gold-text {
   color: var(--color-luxury-gold);
@@ -268,9 +246,7 @@ a {
   }
 }
 
-/* =========================================================
-   BUTTONS
-========================================================= */
+
 
 .btn-gold {
   position: relative;
@@ -400,9 +376,7 @@ a {
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* =========================================================
-   3D NAVBAR
-========================================================= */
+
 
 .navbar-3d {
   perspective: 1200px;
@@ -491,9 +465,6 @@ a {
     0 0 20px rgba(201, 162, 39, 0.08);
 }
 
-/* =========================================================
-   NAV LINKS
-========================================================= */
 
 .nav-link {
   position: relative;
@@ -538,9 +509,7 @@ a {
   width: 22px;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+
 
 .hero-gradient {
   position: relative;
@@ -592,9 +561,7 @@ a {
   );
 }
 
-/* =========================================================
-   WATCH CARDS
-========================================================= */
+
 
 .luxury-card {
   position: relative;
@@ -694,9 +661,6 @@ a {
   text-transform: uppercase;
 }
 
-/* =========================================================
-   INPUTS
-========================================================= */
 
 input,
 textarea,
@@ -740,9 +704,7 @@ select {
   color: #aaa;
 }
 
-/* =========================================================
-   CART
-========================================================= */
+
 
 .cart-drawer {
   animation: cartDrawer 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -813,9 +775,7 @@ select {
   }
 }
 
-/* =========================================================
-   3D ELEMENTS
-========================================================= */
+
 
 .perspective-3d {
   perspective: 1200px;
@@ -830,9 +790,7 @@ select {
   transform-style: preserve-3d;
 }
 
-/* =========================================================
-   FLOAT ANIMATION
-========================================================= */
+
 
 .animate-float {
   animation: luxuryFloat 5s ease-in-out infinite;
@@ -853,9 +811,7 @@ select {
   }
 }
 
-/* =========================================================
-   FADE ANIMATIONS
-========================================================= */
+
 
 .fade-in {
   animation: fadeIn 0.7s ease both;
@@ -887,9 +843,7 @@ select {
   }
 }
 
-/* =========================================================
-   WORKFLOW
-========================================================= */
+
 
 .workflow-page {
   animation: workflowPageIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -966,9 +920,7 @@ select {
   }
 }
 
-/* =========================================================
-   WORKFLOW STEPS
-========================================================= */
+
 
 .workflow-step {
   position: relative;
@@ -1049,9 +1001,7 @@ select {
   }
 }
 
-/* =========================================================
-   SUCCESS
-========================================================= */
+
 
 .add-to-cart-success {
   animation: cartSuccess 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -1150,9 +1100,7 @@ select {
   }
 }
 
-/* =========================================================
-   LOADER
-========================================================= */
+
 
 .watch-loader {
   width: 45px;
@@ -1172,9 +1120,6 @@ select {
   }
 }
 
-/* =========================================================
-   SHINE
-========================================================= */
 
 .workflow-shine {
   position: relative;
@@ -1208,9 +1153,7 @@ select {
   left: 140%;
 }
 
-/* =========================================================
-   DECORATIVE GOLD ORB
-========================================================= */
+
 
 .gold-orb {
   position: absolute;
@@ -1227,9 +1170,7 @@ select {
   pointer-events: none;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+
 
 @media (max-width: 639px) {
   html {
@@ -1281,9 +1222,7 @@ select {
   }
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
+
 
 @media (min-width: 640px) and (max-width: 1023px) {
   .container-luxury {
@@ -1296,9 +1235,7 @@ select {
   }
 }
 
-/* =========================================================
-   LAPTOP
-========================================================= */
+
 
 @media (min-width: 1024px) {
   .container-luxury {
@@ -1306,9 +1243,6 @@ select {
   }
 }
 
-/* =========================================================
-   LARGE DESKTOP
-========================================================= */
 
 @media (min-width: 1440px) {
   .container-luxury {
@@ -1321,9 +1255,6 @@ select {
   }
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   html {

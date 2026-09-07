@@ -26,15 +26,10 @@ const WatchCard = ({ watch }) => {
 
           {/* Featured Badge */}
           {watch.featured && (
-            <span className="absolute left-4 top-4 rounded-md bg-amber-500 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.25em] text-black shadow-lg">
+            <span className="absolute right-4 top-4 rounded-md bg-gradient-to-r from-amber-500 to-amber-400 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.25em] text-black shadow-lg">
               Featured
             </span>
           )}
-
-          {/* Top-Right Detail Icon Reveal */}
-          <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100">
-            <ArrowUpRight size={14} strokeWidth={2} />
-          </div>
 
           {/* Gradient Vignette Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-80" />
@@ -64,24 +59,34 @@ const WatchCard = ({ watch }) => {
 
         {/* Action Button Footer */}
         <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4">
+          {/* Details Link */}
           <Link
             to={`/watch/${watch.id}`}
-            className="text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400 transition-colors duration-300 hover:text-white"
+            className="group/link flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400 transition-colors duration-300 hover:text-white"
           >
-            Details
+            <span>Details</span>
+            <ArrowUpRight
+              size={14}
+              strokeWidth={2}
+              className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-amber-400"
+            />
           </Link>
 
-          <button
-            onClick={() => addToCart(watch)}
-            className="group/btn relative flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-black shadow-[0_4px_20px_rgba(245,158,11,0.3)] transition-all duration-300 hover:shadow-[0_6px_25px_rgba(245,158,11,0.5)] active:scale-95"
-          >
-            <ShoppingBag
-              size={14}
-              strokeWidth={2.2}
-              className="transition-transform duration-300 group-hover/btn:-rotate-12"
-            />
-            <span>Add</span>
-          </button>
+          {/* Compact Add to Cart Button */}
+          <div className="group/container relative p-[2px] rounded-[0.7em] bg-gradient-to-r from-[#03a9f4] to-[#f441a5] transition-all duration-400 active:scale-95">
+            <div className="absolute inset-0 m-auto rounded-[0.7em] bg-gradient-to-r from-[#03a9f4] to-[#f441a5] blur-0 transition-all duration-400 group-hover/container:blur-[0.8em] group-active/container:blur-[0.2em] -z-10" />
+            <button
+              onClick={() => addToCart(watch)}
+              className="group/btn relative flex items-center gap-1.5 rounded-[0.5em] bg-black px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-white shadow-[1px_1px_2px_rgba(0,0,0,0.7)] cursor-pointer border-none transition-all"
+            >
+              <ShoppingBag
+                size={12}
+                strokeWidth={2.2}
+                className="transition-transform duration-300 group-hover/btn:-rotate-12"
+              />
+              <span>Add</span>
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>
